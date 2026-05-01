@@ -9,12 +9,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonic Identity | Nanasi Institute</title>
-    <link rel="stylesheet" href="/src/styles.css?v=sonic-redesign-4" />
+    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-5" />
   </head>
   <body>
     <main>
       <nav class="nav nav-dark">
-        <a href="/" class="brand" aria-label="Nanasi Institute">
+        <a href="./" class="brand" aria-label="Nanasi Institute">
           <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
             <path d="M31 48h4v9h-4z" />
             <path d="M18 57h30" />
@@ -27,8 +27,8 @@
           <span>Nanasi Institute</span>
         </a>
         <div>
-          <a href="/sonic-identity">Sonic Identity</a>
-          <a href="/executive-application">Apply</a>
+          <a href="sonic-identity">Sonic Identity</a>
+          <a href="executive-application">Apply</a>
         </div>
       </nav>
       <header class="hero" id="top">
@@ -37,8 +37,8 @@
           <h1>Help Your Organization Hear Itself Clearly.</h1>
           <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
           <div class="hero-actions">
-            <a class="button primary" href="/executive-application">Begin Executive Application</a>
-            <a class="button ghost" href="/#method">Explore the Method</a>
+            <a class="button primary" href="executive-application">Begin Executive Application</a>
+            <a class="button ghost" href="./#method">Explore the Method</a>
           </div>
           <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
         </div>

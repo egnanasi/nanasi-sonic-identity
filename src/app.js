@@ -456,7 +456,7 @@ function renderMarketing() {
         <a href="#method">Method</a>
         <a href="#phases">Engagement</a>
         <a href="#application">Apply</a>
-        <a href="/admin.html" class="admin-link">Admin</a>
+        <a href="admin.html" class="admin-link">Admin</a>
       </div>
     </nav>
 
@@ -566,7 +566,7 @@ async function renderAdmin() {
   const response = await fetch("/api/submissions");
   const submissions = response.ok ? await response.json() : [];
   app.innerHTML = `
-    <nav class="nav">${brandLogo("/")}<div><a href="/admin.html">Admin</a></div></nav>
+    <nav class="nav">${brandLogo("./")}<div><a href="admin.html">Admin</a></div></nav>
     <section class="section admin-section">
       <div class="section-copy">
         <p class="eyebrow">Application Review</p>
