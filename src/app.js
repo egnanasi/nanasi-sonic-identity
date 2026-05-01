@@ -475,7 +475,7 @@ function renderMarketing() {
         <span class="orbit-ring ring-one"></span>
         <span class="orbit-ring ring-two"></span>
         <span class="orb-core">VOICE</span>
-        <span class="orbit-label label-voice">Voice</span>
+        <span class="orbit-label label-vision">Vision</span>
         <span class="orbit-label label-origin">Origin</span>
         <span class="orbit-label label-influence">Influence</span>
         <span class="orbit-label label-connection">Connection</span>
