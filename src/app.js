@@ -488,11 +488,11 @@ function renderMarketing() {
         <h2>Sound Is Always Shaping the Experience</h2>
 
         <div class="core-copy">
-          <p>Most organizations give careful attention to what people see and what people read.<br />Far fewer consider what people hear—and how it affects them.</p>
+          <p>Most organizations give careful attention to what people see and what people read.<br />Far fewer consider what people hear and how it affects them.</p>
           <p>Yet sound is constant.</p>
           <p>It fills waiting rooms, workspaces, hallways, and digital experiences.<br />It surrounds moments of stress, decision, celebration, and care.<br />It is present in both the ordinary and the significant.</p>
           <p>Over time, these sounds do more than accompany experience—they shape it.</p>
-          <p>They influence nervous systems.<br />They affect clarity, trust, and emotional tone.<br />They quietly reinforce—or undermine—what an organization stands for.</p>
+          <p>They influence nervous systems.<br />They affect clarity, trust, and emotional tone.<br />They quietly reinforce (or undermine) what an organization stands for.</p>
           <p>And often, this happens without intention.</p>
         </div>
 
