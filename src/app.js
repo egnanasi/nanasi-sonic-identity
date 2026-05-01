@@ -506,7 +506,7 @@ function renderMarketing() {
       </div>
       <div class="voice-grid">
         ${[
-          ["V", "Voice", "Uniqueness, expression, and coherence.", "What makes your organization distinct? Where is there too much noise? What sound needs to emerge?"],
+          ["V", "Vision", "Direction, aspiration, and future orientation.", "What future is your organization moving toward? What must be felt in order for that future to be realized? Where is there misalignment between stated vision and lived experience?"],
           ["O", "Origin", "History, legacy, and identity.", "Where did your organization come from? What founding story still shapes your culture? What values must not be lost?"],
           ["I", "Influence", "Mission, leadership, and impact.", "What difference do you seek to make? How should people be changed after encountering you? What kind of influence should your sound carry?"],
           ["C", "Connection", "Relationships, trust, and belonging.", "Which relationships do you wish to foster? Where is emotional connection most needed?"],
