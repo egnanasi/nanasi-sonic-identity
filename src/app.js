@@ -488,9 +488,11 @@ function renderMarketing() {
         <h2>Sound Is Always Shaping the Experience</h2>
 
         <div class="core-copy">
-          <p>Most organizations give careful attention to what people see and what people read. Far fewer consider what people hear—and how it affects them.</p>
-          <p>Yet sound is constant. It fills waiting rooms, workspaces, hallways, and digital experiences. It surrounds moments of stress, decision, celebration, and care. It is present in both the ordinary and the significant.</p>
-          <p>Over time, these sounds do more than accompany experience—they shape it. They influence nervous systems. They affect clarity, trust, and emotional tone. They quietly reinforce—or undermine—what an organization stands for.</p>
+          <p>Most organizations give careful attention to what people see and what people read.<br />Far fewer consider what people hear—and how it affects them.</p>
+          <p>Yet sound is constant.</p>
+          <p>It fills waiting rooms, workspaces, hallways, and digital experiences.<br />It surrounds moments of stress, decision, celebration, and care.<br />It is present in both the ordinary and the significant.</p>
+          <p>Over time, these sounds do more than accompany experience—they shape it.</p>
+          <p>They influence nervous systems.<br />They affect clarity, trust, and emotional tone.<br />They quietly reinforce—or undermine—what an organization stands for.</p>
           <p>And often, this happens without intention.</p>
         </div>
 
@@ -499,14 +501,14 @@ function renderMarketing() {
         <h3>What Is Left Unshaped Is Left to Chance</h3>
 
         <div class="core-copy">
-          <p>In most environments, sound is an afterthought. A playlist. Background noise. Silence where something supportive could exist.</p>
+          <p>In most environments, sound is an afterthought.<br />A playlist. Background noise. Silence where something supportive could exist.</p>
           <p>But imagine something different:</p>
 
           <div class="core-card">
             <p>An organization where sound is not incidental, but intentional.</p>
             <p>Where key moments are supported by carefully designed emotional environments.</p>
             <p>Where what people hear aligns with what you stand for—and how you want them to feel.</p>
-            <p><strong>Not just a theme. A coherent, lived experience.</strong></p>
+            <p><strong>Not just a theme.<br />A coherent, lived experience.</strong></p>
           </div>
         </div>
 
@@ -515,12 +517,13 @@ function renderMarketing() {
         <h3>Bringing Sound Into Awareness</h3>
 
         <div class="core-copy">
-          <p>This work begins by making the unseen, heard. By listening more closely to what already exists. By understanding how it is felt. And by shaping it with care.</p>
+          <p>This work begins by making the unseen, heard.</p>
+          <p>By listening more closely to what already exists.<br />By understanding how it is felt.<br />And by shaping it with care.</p>
         </div>
 
         <div class="core-closing">
           <p>We do not simply compose music for organizations.</p>
-          <p>We help organizations clarify their Vision and express it through a coherent, embodied VOICE.</p>
+          <p>We help organizations clarify their Vision<br />and express it through a coherent, embodied VOICE.</p>
         </div>
       </div>
     </section>

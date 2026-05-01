@@ -362,12 +362,26 @@ p {
 }
 
 .core-reframe {
-  background: var(--background);
+  width: 100%;
+  max-width: none;
+  scroll-margin-top: 112px;
+  padding-inline: max(20px, calc((100vw - 1160px) / 2));
+  padding-top: clamp(108px, 12vw, 156px);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(47, 143, 78, 0.22), transparent 24rem),
+    radial-gradient(circle at 88% 22%, rgba(221, 229, 234, 0.22), transparent 26rem),
+    linear-gradient(155deg, #edf2ec 0%, #dce9e1 36%, #123a32 100%);
 }
 
 .core-inner {
   max-width: 900px;
   margin-inline: auto;
+  padding: clamp(32px, 6vw, 64px);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 20px;
+  background: rgba(246, 242, 234, 0.82);
+  box-shadow: 0 28px 90px rgba(6, 43, 38, 0.14);
+  backdrop-filter: blur(16px);
 }
 
 .core-inner h2 {
@@ -386,7 +400,7 @@ p {
 
 .core-copy {
   display: grid;
-  gap: 24px;
+  gap: 30px;
 }
 
 .core-copy p {
@@ -397,8 +411,8 @@ p {
 }
 
 .core-divider {
-  margin: clamp(54px, 8vw, 72px) 0;
-  border-top: 1px solid rgba(31, 61, 43, 0.2);
+  margin: clamp(64px, 9vw, 84px) 0;
+  border-top: 1px solid rgba(6, 43, 38, 0.22);
 }
 
 .core-card {
@@ -408,8 +422,9 @@ p {
   padding: clamp(26px, 4vw, 36px);
   border: 1px solid rgba(31, 61, 43, 0.1);
   border-radius: 16px;
-  background: var(--surface);
-  box-shadow: 0 18px 50px rgba(20, 42, 31, 0.06);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(235, 244, 238, 0.9));
+  box-shadow: 0 20px 60px rgba(6, 43, 38, 0.1);
 }
 
 .core-card strong {
