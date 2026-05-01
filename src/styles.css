@@ -439,9 +439,11 @@ p {
   padding: clamp(28px, 4vw, 40px);
   border-radius: 16px;
   background:
-    radial-gradient(circle at top right, rgba(184, 155, 94, 0.18), transparent 18rem),
-    linear-gradient(100deg, var(--forest) 0%, var(--forest-dark) 100%);
-  box-shadow: 0 24px 70px rgba(20, 42, 31, 0.16);
+    radial-gradient(circle at 74% 44%, rgba(184, 155, 94, 0.26), transparent 19rem),
+    radial-gradient(circle at 84% 12%, rgba(221, 229, 234, 0.22), transparent 27rem),
+    radial-gradient(circle at 20% 35%, rgba(47, 143, 78, 0.16), transparent 24rem),
+    linear-gradient(116deg, #031c1a 0%, var(--forest-dark) 43%, var(--forest-mid) 100%);
+  box-shadow: 0 28px 78px rgba(6, 43, 38, 0.2);
 }
 
 .core-closing p {
