@@ -483,17 +483,44 @@ function renderMarketing() {
       </div>
     </header>
 
-    <section class="section split reveal" id="method">
-      <div class="section-copy">
-        <p class="eyebrow">The Core Reframe</p>
-        <h2>A Theme Song Is Not the Product.</h2>
-      </div>
-      <div class="prose">
-        <p>A theme song is often the first thing leaders ask for. But when approached correctly, it becomes the audible artifact of something much deeper: organizational clarity.</p>
-        <p>Every organization already has a sonic identity. The question is whether that identity is intentional, aligned, and emotionally coherent.</p>
-        <div class="statement-card">
-          <strong>We do not simply compose music for organizations.</strong>
-          <span>We help organizations find, restore, and amplify their VOICE.</span>
+    <section class="section core-reframe reveal" id="method">
+      <div class="core-inner">
+        <h2>Sound Is Always Shaping the Experience</h2>
+
+        <div class="core-copy">
+          <p>Most organizations give careful attention to what people see and what people read. Far fewer consider what people hear—and how it affects them.</p>
+          <p>Yet sound is constant. It fills waiting rooms, workspaces, hallways, and digital experiences. It surrounds moments of stress, decision, celebration, and care. It is present in both the ordinary and the significant.</p>
+          <p>Over time, these sounds do more than accompany experience—they shape it. They influence nervous systems. They affect clarity, trust, and emotional tone. They quietly reinforce—or undermine—what an organization stands for.</p>
+          <p>And often, this happens without intention.</p>
+        </div>
+
+        <div class="core-divider"></div>
+
+        <h3>What Is Left Unshaped Is Left to Chance</h3>
+
+        <div class="core-copy">
+          <p>In most environments, sound is an afterthought. A playlist. Background noise. Silence where something supportive could exist.</p>
+          <p>But imagine something different:</p>
+
+          <div class="core-card">
+            <p>An organization where sound is not incidental, but intentional.</p>
+            <p>Where key moments are supported by carefully designed emotional environments.</p>
+            <p>Where what people hear aligns with what you stand for—and how you want them to feel.</p>
+            <p><strong>Not just a theme. A coherent, lived experience.</strong></p>
+          </div>
+        </div>
+
+        <div class="core-divider"></div>
+
+        <h3>Bringing Sound Into Awareness</h3>
+
+        <div class="core-copy">
+          <p>This work begins by making the unseen, heard. By listening more closely to what already exists. By understanding how it is felt. And by shaping it with care.</p>
+        </div>
+
+        <div class="core-closing">
+          <p>We do not simply compose music for organizations.</p>
+          <p>We help organizations clarify their Vision and express it through a coherent, embodied VOICE.</p>
         </div>
       </div>
     </section>
