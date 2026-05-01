@@ -523,7 +523,7 @@ function renderMarketing() {
 
         <div class="core-closing">
           <p>We do not simply compose music for organizations.</p>
-          <p>We help organizations clarify their Vision<br />and express it through a coherent, embodied VOICE.</p>
+          <p>We help organizations clarify their Vision and express it through a coherent, embodied VOICE.</p>
         </div>
       </div>
     </section>
