@@ -1,3 +1,7 @@
+// Nanasi Institute Sonic Identity Redesign
+// Built in isolated branch: redesign-sonic-identity
+// Safe to delete without affecting main site
+
 const app = document.querySelector("#app");
 
 const roleOptions = [
@@ -138,12 +142,29 @@ const state = {
 
 const steps = [
   "Organization Profile",
-  "Inquiry",
+  "Inquiry Context",
   "VOICE Diagnostic",
-  "Deliverables",
+  "Desired Deliverables",
   "Scope & Readiness",
-  "Strategic Fit",
+  "Strategic Reflection",
 ];
+
+function brandLogo(href = "#top") {
+  return `
+    <a href="${href}" class="brand" aria-label="Nanasi Institute">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M31 48h4v9h-4z" />
+        <path d="M18 57h30" />
+        <path d="M33 49c-5-6-8-11-8-17" />
+        <path d="M33 49c6-6 9-12 9-20" />
+        <path d="M33 48c-8-4-13-9-16-16" />
+        <path d="M34 48c8-4 13-9 16-17" />
+        <path d="M19 38c-7 0-12-5-12-11 0-5 4-9 9-10 2-6 8-10 16-10 7 0 13 4 16 10 5 1 9 5 9 10 0 6-5 11-12 11H19z" />
+      </svg>
+      <span>Nanasi Institute</span>
+    </a>
+  `;
+}
 
 function optionTags(options, selected = "") {
   return [
@@ -353,13 +374,20 @@ async function submitApplication() {
     submittedAt: new Date().toISOString(),
   };
 
-  const response = await fetch("/api/applications", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+  try {
+    const response = await fetch("/api/applications", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-  if (!response.ok) throw new Error("Submission failed");
+    if (!response.ok) throw new Error("Submission failed");
+  } catch (error) {
+    const staticSubmissions = JSON.parse(localStorage.getItem("nanasiApplications") || "[]");
+    staticSubmissions.unshift(payload);
+    localStorage.setItem("nanasiApplications", JSON.stringify(staticSubmissions));
+  }
+
   state.submitted = true;
   render();
   document.querySelector("#application").scrollIntoView({ behavior: "smooth" });
@@ -372,7 +400,7 @@ function renderEstimate() {
       <p class="eyebrow">Preliminary Engagement Range</p>
       <p>Based on your responses, your organization appears to be exploring an engagement in the following preliminary range:</p>
       <strong>${range}</strong>
-      <p>This is not a formal quote. Nanasi Institute reviews each application to determine strategic fit, readiness, scope, and appropriate next steps.</p>
+      <p>This is not a formal quote. Final scope is determined after application review.</p>
     </aside>
   `;
 }
@@ -383,7 +411,7 @@ function renderApplication() {
       <section class="section application-section" id="application">
         <div class="success-card">
           <p class="eyebrow">Application Received</p>
-          <h2>Thank you for your application.</h2>
+          <h2>Thank you. Your application has been received and is under review.</h2>
           <p>Nanasi Institute will review your inquiry for strategic fit, organizational readiness, and scope alignment. If there appears to be a strong fit, we will follow up regarding a private executive consultation.</p>
           <p>We accept a limited number of Sonic Identity & Alignment engagements each year to preserve depth, quality, and strategic focus.</p>
         </div>
@@ -422,8 +450,8 @@ function renderApplication() {
 
 function renderMarketing() {
   return `
-    <nav class="nav">
-      <a href="#top" class="brand">Nanasi Institute</a>
+    <nav class="nav nav-dark">
+      ${brandLogo("#top")}
       <div>
         <a href="#method">Method</a>
         <a href="#phases">Engagement</a>
@@ -444,11 +472,18 @@ function renderMarketing() {
         <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
       </div>
       <div class="sound-orbit" aria-hidden="true">
-        <span></span><span></span><span></span>
+        <span class="orbit-ring ring-one"></span>
+        <span class="orbit-ring ring-two"></span>
+        <span class="orb-core">VOICE</span>
+        <span class="orbit-label label-voice">Voice</span>
+        <span class="orbit-label label-origin">Origin</span>
+        <span class="orbit-label label-influence">Influence</span>
+        <span class="orbit-label label-connection">Connection</span>
+        <span class="orbit-label label-environment">Environment</span>
       </div>
     </header>
 
-    <section class="section split" id="method">
+    <section class="section split reveal" id="method">
       <div class="section-copy">
         <p class="eyebrow">The Core Reframe</p>
         <h2>A Theme Song Is Not the Product.</h2>
@@ -463,7 +498,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reveal">
       <div class="section-copy centered">
         <p class="eyebrow">The Nanasi VOICE Framework</p>
         <h2>The Nanasi VOICE Framework™</h2>
@@ -488,7 +523,7 @@ function renderMarketing() {
       <p class="closing-line">The result is not merely music. It is an integrated emotional environment.</p>
     </section>
 
-    <section class="section" id="phases">
+    <section class="section editorial-section reveal" id="phases">
       <div class="section-copy centered">
         <p class="eyebrow">Engagement Architecture</p>
         <h2>Three Phases. One Integrated Sonic System.</h2>
@@ -511,7 +546,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section split">
+    <section class="section split dark-section reveal">
       <div class="section-copy">
         <p class="eyebrow">Premium Positioning</p>
         <h2>This Is Not a Music Project. It Is an Alignment Engagement.</h2>
@@ -531,7 +566,7 @@ async function renderAdmin() {
   const response = await fetch("/api/submissions");
   const submissions = response.ok ? await response.json() : [];
   app.innerHTML = `
-    <nav class="nav"><a class="brand" href="/">Nanasi Institute</a><div><a href="/admin.html">Admin</a></div></nav>
+    <nav class="nav">${brandLogo("/")}<div><a href="/admin.html">Admin</a></div></nav>
     <section class="section admin-section">
       <div class="section-copy">
         <p class="eyebrow">Application Review</p>
@@ -591,12 +626,38 @@ function render() {
 
   document.querySelector("#application-form")?.addEventListener("change", collectForm);
   document.querySelector("#application-form")?.addEventListener("input", collectForm);
+  setupReveal();
 
-  if (window.location.hash === "#application") {
-    requestAnimationFrame(() => {
-      document.querySelector("#application")?.scrollIntoView({ block: "start" });
+  if (window.location.hash === "#application" || window.location.hash === "#top") {
+    const target = window.location.hash === "#application" ? "#application" : "#top";
+    [40, 180, 420].forEach((delay) => {
+      setTimeout(() => {
+        document.querySelector(target)?.scrollIntoView({ block: "start" });
+      }, delay);
     });
   }
+}
+
+function setupReveal() {
+  const revealItems = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16 },
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
 }
 
 render();

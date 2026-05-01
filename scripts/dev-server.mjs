@@ -157,10 +157,15 @@ const server = createServer(async (request, response) => {
     return;
   }
 
+  const extension = extname(filePath);
   response.writeHead(200, {
-    "Content-Type": mimeTypes.get(extname(filePath)) || "application/octet-stream",
+    "Content-Type": mimeTypes.get(extension) || (extension === "" ? "text/html; charset=utf-8" : "application/octet-stream"),
     "Cache-Control": "no-store",
   });
+  if (request.method === "HEAD") {
+    response.end();
+    return;
+  }
   createReadStream(filePath).pipe(response);
 });
 

@@ -1,0 +1,54 @@
+<!--
+// Nanasi Institute Sonic Identity Redesign
+// Built in isolated branch: redesign-sonic-identity
+// Safe to delete without affecting main site
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonic Identity | Nanasi Institute</title>
+    <link rel="stylesheet" href="/src/styles.css?v=sonic-redesign-4" />
+  </head>
+  <body>
+    <main>
+      <nav class="nav nav-dark">
+        <a href="/" class="brand" aria-label="Nanasi Institute">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M31 48h4v9h-4z" />
+            <path d="M18 57h30" />
+            <path d="M33 49c-5-6-8-11-8-17" />
+            <path d="M33 49c6-6 9-12 9-20" />
+            <path d="M33 48c-8-4-13-9-16-16" />
+            <path d="M34 48c8-4 13-9 16-17" />
+            <path d="M19 38c-7 0-12-5-12-11 0-5 4-9 9-10 2-6 8-10 16-10 7 0 13 4 16 10 5 1 9 5 9 10 0 6-5 11-12 11H19z" />
+          </svg>
+          <span>Nanasi Institute</span>
+        </a>
+        <div>
+          <a href="/sonic-identity">Sonic Identity</a>
+          <a href="/executive-application">Apply</a>
+        </div>
+      </nav>
+      <header class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Safe Redesign Route</p>
+          <h1>Help Your Organization Hear Itself Clearly.</h1>
+          <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="/executive-application">Begin Executive Application</a>
+            <a class="button ghost" href="/#method">Explore the Method</a>
+          </div>
+          <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
+        </div>
+        <div class="sound-orbit" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </header>
+      <footer class="footer">
+        <p>Nanasi Institute helps organizations move from emotional noise to organizational voice - clarifying identity, restoring coherence, and designing environments people can feel.</p>
+      </footer>
+    </main>
+  </body>
+</html>

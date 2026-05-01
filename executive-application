@@ -1,0 +1,25 @@
+<!--
+// Nanasi Institute Sonic Identity Redesign
+// Built in isolated branch: redesign-sonic-identity
+// Safe to delete without affecting main site
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Executive Application | Nanasi Institute</title>
+    <link rel="stylesheet" href="/src/styles.css?v=sonic-redesign-4" />
+    <script type="module" src="/src/app.js?v=sonic-redesign-4"></script>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        if (!window.location.hash) {
+          window.location.hash = "application";
+        }
+      });
+    </script>
+  </body>
+</html>
