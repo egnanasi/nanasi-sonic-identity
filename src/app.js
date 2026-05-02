@@ -139,7 +139,7 @@ const state = {
     deliverables: [],
   },
 };
-let navScrollHandler;
+let sectionObserver;
 
 const steps = [
   "Organization Profile",
@@ -390,8 +390,8 @@ async function submitApplication() {
   }
 
   state.submitted = true;
-  render();
-  document.querySelector("#application").scrollIntoView({ behavior: "smooth" });
+  render({ skipHashScroll: true });
+  scrollApplicationIntoView();
 }
 
 function renderEstimate() {
@@ -451,17 +451,30 @@ function renderApplication() {
 
 function renderMarketing() {
   return `
-    <nav class="nav nav-dark">
-      ${brandLogo("#top")}
-      <div>
-        <a href="#voice-framework">Method</a>
-        <a href="#phases">Engagement</a>
-        <a href="#application">Apply</a>
-        <a href="admin.html" class="admin-link">Admin</a>
-      </div>
+    <nav class="mobile-section-nav" aria-label="Section navigation">
+      ${[
+        ["#top", "Hero"],
+        ["#method", "Method"],
+        ["#phases", "Engagement"],
+        ["#why-this-matters", "Why It Matters"],
+        ["#application", "Application"],
+      ].map(([href, label]) => `
+        <button type="button" data-section-target="${href}" aria-label="${label}">
+          <span></span>
+        </button>
+      `).join("")}
     </nav>
 
     <header class="hero" id="top">
+      <nav class="nav nav-dark">
+        ${brandLogo("#top")}
+        <div>
+          <a href="#voice-framework">Method</a>
+          <a href="#phases">Engagement</a>
+          <a href="#application">Apply</a>
+          <a href="admin.html" class="admin-link">Admin</a>
+        </div>
+      </nav>
       <div class="hero-copy">
         <p class="eyebrow">Sonic Identity & Alignment Experiences</p>
         <h1>Help Your Organization Hear Itself Clearly.</h1>
@@ -578,7 +591,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section split why-section reveal">
+    <section class="section split why-section reveal" id="why-this-matters">
       <div class="section-copy">
         <p class="eyebrow">Why This Matters</p>
         <h2>Organizations invest in this work because the felt experience of their mission matters.</h2>
@@ -625,7 +638,7 @@ async function renderAdmin() {
   `;
 }
 
-function render() {
+function render(options = {}) {
   if (window.location.pathname === "/admin.html") {
     renderAdmin();
     return;
@@ -639,6 +652,7 @@ function render() {
   document.querySelector("#application-form")?.addEventListener("click", async (event) => {
     const action = event.target.dataset.action;
     if (!action) return;
+    event.preventDefault();
     collectForm();
     if (action === "back") state.step = Math.max(0, state.step - 1);
     if (action === "next") state.step = Math.min(steps.length - 1, state.step + 1);
@@ -650,16 +664,17 @@ function render() {
       }
       return;
     }
-    render();
-    document.querySelector("#application").scrollIntoView({ behavior: "smooth", block: "start" });
+    render({ skipHashScroll: true });
+    scrollApplicationIntoView();
   });
 
   document.querySelector("#application-form")?.addEventListener("change", collectForm);
   document.querySelector("#application-form")?.addEventListener("input", collectForm);
-  setupNavScroll();
+  document.querySelector("#application-form")?.addEventListener("submit", (event) => event.preventDefault());
+  setupMobileSectionNav();
   setupReveal();
 
-  if (window.location.hash) {
+  if (window.location.hash && !options.skipHashScroll) {
     const target = window.location.hash;
     [40, 180, 420].forEach((delay) => {
       setTimeout(() => {
@@ -669,20 +684,59 @@ function render() {
   }
 }
 
-function setupNavScroll() {
-  const nav = document.querySelector(".nav");
-  if (!nav) return;
+function scrollApplicationIntoView() {
+  const target = document.querySelector("#application-form") || document.querySelector("#application");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+}
 
-  if (navScrollHandler) {
-    window.removeEventListener("scroll", navScrollHandler);
-  }
+function setupMobileSectionNav() {
+  const tracker = document.querySelector(".mobile-section-nav");
+  if (!tracker) return;
 
-  navScrollHandler = () => {
-    nav.classList.toggle("nav-scrolled", window.scrollY > 18);
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const buttons = [...tracker.querySelectorAll("button[data-section-target]")];
+  const sections = buttons
+    .map((button) => document.querySelector(button.dataset.sectionTarget))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    buttons.forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.sectionTarget === `#${id}`);
+    });
   };
 
-  navScrollHandler();
-  window.addEventListener("scroll", navScrollHandler, { passive: true });
+  tracker.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-section-target]");
+    if (!button) return;
+    const target = document.querySelector(button.dataset.sectionTarget);
+    if (!target) return;
+    target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    if (!prefersReducedMotion && "vibrate" in navigator) {
+      navigator.vibrate(10);
+    }
+  });
+
+  sectionObserver?.disconnect();
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    },
+    {
+      rootMargin: "-30% 0px -45% 0px",
+      threshold: [0.12, 0.28, 0.44],
+    },
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+  if (window.location.hash) {
+    setActive(window.location.hash.slice(1));
+  } else {
+    setActive("top");
+  }
 }
 
 function setupReveal() {
