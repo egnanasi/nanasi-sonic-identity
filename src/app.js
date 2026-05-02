@@ -422,9 +422,9 @@ function renderApplication() {
   return `
     <section class="section application-section" id="application">
       <div class="section-copy">
-        <p class="eyebrow">Executive Application</p>
-        <h2>Executive Application</h2>
-        <p>This application helps us determine whether your organization is a strong fit for a Sonic Identity & Alignment Experience. Based on your selections, we will prepare an initial engagement range and recommend the appropriate pathway.</p>
+        <p class="eyebrow">Begin the Conversation</p>
+        <h2>Start With Fit</h2>
+        <p>We begin with a brief application to understand your organization, your goals, and whether this work is the right fit for a joint partnership.</p>
         <p class="note">Submission does not guarantee acceptance. Nanasi Institute reviews each inquiry carefully to determine strategic fit, scope, and readiness.</p>
       </div>
       <div class="application-shell">
@@ -455,7 +455,7 @@ function renderMarketing() {
       <div>
         <a href="#method">Method</a>
         <a href="#phases">Engagement</a>
-        <a href="#conversation">Apply</a>
+        <a href="#application">Apply</a>
         <a href="admin.html" class="admin-link">Admin</a>
       </div>
     </nav>
@@ -466,7 +466,7 @@ function renderMarketing() {
         <h1>Help Your Organization Hear Itself Clearly.</h1>
         <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#conversation">Begin Executive Application</a>
+          <a class="button primary" href="#application">Begin Executive Application</a>
           <a class="button ghost" href="#method">Explore the Method</a>
         </div>
         <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
@@ -578,7 +578,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section split dark-section reveal">
+    <section class="section split why-section reveal">
       <div class="section-copy">
         <p class="eyebrow">Why This Matters</p>
         <h2>Organizations invest in this work because the felt experience of their mission matters.</h2>
@@ -590,15 +590,6 @@ function renderMarketing() {
         <article><h3>Healthcare systems</h3><p>Supporting calm, dignity, and healing environments</p></article>
         <article><h3>Mission-driven organizations</h3><p>Helping values become tangible and felt</p></article>
         <article><h3>Leadership teams</h3><p>Bringing alignment between vision, culture, and experience</p></article>
-      </div>
-    </section>
-
-    <section class="section conversation-section reveal" id="conversation">
-      <div class="conversation-card">
-        <p class="eyebrow">Begin the Conversation</p>
-        <h2>Start With Fit</h2>
-        <p>We begin with a brief application to understand your organization, your goals, and whether this work is the right fit for a joint partnership.</p>
-        <a class="button primary" href="#application">Begin Executive Application</a>
       </div>
     </section>
   `;

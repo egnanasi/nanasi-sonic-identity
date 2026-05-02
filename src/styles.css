@@ -640,6 +640,28 @@ p {
   color: rgba(255, 250, 240, 0.7);
 }
 
+.why-section {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(20px, calc((100vw - 1160px) / 2));
+  background:
+    radial-gradient(circle at 14% 12%, rgba(221, 229, 234, 0.5), transparent 24rem),
+    radial-gradient(circle at 88% 24%, rgba(47, 143, 78, 0.13), transparent 28rem),
+    linear-gradient(150deg, rgba(246, 242, 234, 0.96), rgba(235, 243, 237, 0.86));
+}
+
+.why-section h2 {
+  color: var(--ink);
+}
+
+.why-section h3 {
+  color: var(--forest-dark);
+}
+
+.why-section p {
+  color: rgba(28, 31, 29, 0.72);
+}
+
 .impact-stack,
 .outcome-stack {
   display: grid;
@@ -648,48 +670,18 @@ p {
 
 .impact-stack article,
 .outcome-stack article {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  padding: 24px;
+  border: 1px solid rgba(31, 61, 43, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 18px 55px rgba(6, 43, 38, 0.07);
+  backdrop-filter: blur(14px);
 }
 
 .impact-heading {
-  margin-bottom: 8px;
-  color: rgba(255, 250, 240, 0.9);
+  margin-bottom: 12px;
+  color: var(--forest-dark);
   font-weight: 800;
-}
-
-.conversation-section {
-  scroll-margin-top: 112px;
-  padding-top: clamp(72px, 8vw, 104px);
-  padding-bottom: clamp(36px, 5vw, 72px);
-}
-
-.conversation-card {
-  max-width: 880px;
-  margin-inline: auto;
-  padding: clamp(32px, 5vw, 58px);
-  border: 1px solid rgba(31, 61, 43, 0.12);
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at top right, rgba(47, 143, 78, 0.12), transparent 20rem),
-    rgba(255, 255, 255, 0.78);
-  box-shadow: 0 24px 80px rgba(6, 43, 38, 0.1);
-  text-align: center;
-}
-
-.conversation-card h2 {
-  margin-inline: auto;
-}
-
-.conversation-card p:not(.eyebrow) {
-  max-width: 680px;
-  margin-inline: auto;
-  font-size: 1.08rem;
-}
-
-.conversation-card .button {
-  margin-top: 28px;
 }
 
 .application-section {
