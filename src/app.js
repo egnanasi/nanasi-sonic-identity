@@ -453,7 +453,7 @@ function renderMarketing() {
     <nav class="nav nav-dark">
       ${brandLogo("#top")}
       <div>
-        <a href="#method">Method</a>
+        <a href="#voice-framework">Method</a>
         <a href="#phases">Engagement</a>
         <a href="#application">Apply</a>
         <a href="admin.html" class="admin-link">Admin</a>
@@ -467,7 +467,7 @@ function renderMarketing() {
         <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
         <div class="hero-actions">
           <a class="button primary" href="#application">Begin Executive Application</a>
-          <a class="button ghost" href="#method">Explore the Method</a>
+          <a class="button ghost" href="#voice-framework">Explore the Method</a>
         </div>
         <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
       </div>
@@ -528,7 +528,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section voice-section reveal" id="voice-framework">
       <div class="section-copy centered">
         <p class="eyebrow">The Nanasi VOICE Framework</p>
         <h2>The Nanasi VOICE Framework™</h2>

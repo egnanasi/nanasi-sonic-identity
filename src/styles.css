@@ -255,7 +255,10 @@ p {
 .application-card .primary,
 .section .primary,
 .admin-section .primary {
-  background: var(--forest);
+  border-color: rgba(184, 155, 94, 0.34);
+  background:
+    radial-gradient(circle at 78% 22%, rgba(184, 155, 94, 0.2), transparent 10rem),
+    linear-gradient(116deg, #031c1a 0%, var(--forest-dark) 48%, var(--forest-mid) 100%);
   color: #fff;
 }
 
@@ -374,7 +377,7 @@ p {
 }
 
 .core-inner {
-  max-width: 900px;
+  max-width: 1160px;
   margin-inline: auto;
   padding: clamp(32px, 6vw, 64px);
   border: 1px solid rgba(255, 255, 255, 0.36);
@@ -512,6 +515,20 @@ p {
   font-size: 1.12rem;
 }
 
+.voice-section {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(20px, calc((100vw - 1160px) / 2));
+  background:
+    radial-gradient(circle at 86% 18%, rgba(221, 229, 234, 0.42), transparent 24rem),
+    radial-gradient(circle at 12% 72%, rgba(47, 143, 78, 0.1), transparent 24rem),
+    linear-gradient(180deg, rgba(246, 242, 234, 0.98), rgba(239, 246, 241, 0.86));
+}
+
+.voice-section .centered {
+  max-width: 980px;
+}
+
 .voice-grid,
 .phase-grid {
   display: grid;
@@ -552,14 +569,19 @@ p {
 }
 
 .editorial-section {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(20px, calc((100vw - 1160px) / 2));
   background:
-    linear-gradient(180deg, rgba(221, 229, 234, 0.28), rgba(246, 242, 234, 0)),
-    var(--background);
+    radial-gradient(circle at 16% 18%, rgba(221, 229, 234, 0.55), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(184, 155, 94, 0.16), transparent 22rem),
+    radial-gradient(circle at 72% 86%, rgba(47, 143, 78, 0.16), transparent 28rem),
+    linear-gradient(145deg, rgba(246, 242, 234, 0.98), rgba(224, 237, 229, 0.92) 54%, rgba(211, 228, 219, 0.9));
 }
 
 .phase-grid {
   grid-template-columns: 1fr;
-  max-width: 980px;
+  max-width: 1120px;
   margin-inline: auto;
 }
 
@@ -645,21 +667,22 @@ p {
   max-width: none;
   padding-inline: max(20px, calc((100vw - 1160px) / 2));
   background:
-    radial-gradient(circle at 14% 12%, rgba(221, 229, 234, 0.5), transparent 24rem),
-    radial-gradient(circle at 88% 24%, rgba(47, 143, 78, 0.13), transparent 28rem),
-    linear-gradient(150deg, rgba(246, 242, 234, 0.96), rgba(235, 243, 237, 0.86));
+    radial-gradient(circle at 74% 44%, rgba(184, 155, 94, 0.26), transparent 19rem),
+    radial-gradient(circle at 84% 12%, rgba(221, 229, 234, 0.22), transparent 27rem),
+    radial-gradient(circle at 20% 35%, rgba(47, 143, 78, 0.16), transparent 24rem),
+    linear-gradient(116deg, #031c1a 0%, var(--forest-dark) 43%, var(--forest-mid) 100%);
 }
 
 .why-section h2 {
-  color: var(--ink);
+  color: #fffaf0;
 }
 
 .why-section h3 {
-  color: var(--forest-dark);
+  color: #fffaf0;
 }
 
 .why-section p {
-  color: rgba(28, 31, 29, 0.72);
+  color: rgba(255, 250, 240, 0.74);
 }
 
 .impact-stack,
@@ -671,16 +694,16 @@ p {
 .impact-stack article,
 .outcome-stack article {
   padding: 24px;
-  border: 1px solid rgba(31, 61, 43, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 18px 55px rgba(6, 43, 38, 0.07);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(14px);
 }
 
 .impact-heading {
   margin-bottom: 12px;
-  color: var(--forest-dark);
+  color: rgba(255, 250, 240, 0.92);
   font-weight: 800;
 }
 
