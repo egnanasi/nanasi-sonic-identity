@@ -423,7 +423,7 @@ function renderApplication() {
     <section class="section application-section" id="application">
       <div class="section-copy">
         <p class="eyebrow">Begin the Conversation</p>
-        <h2>Start With Fit</h2>
+        <h2>Executive Application</h2>
         <p>We begin with a brief application to understand your organization, your goals, and whether this work is the right fit for a joint partnership.</p>
         <p class="note">Submission does not guarantee acceptance. Nanasi Institute reviews each inquiry carefully to determine strategic fit, scope, and readiness.</p>
       </div>
