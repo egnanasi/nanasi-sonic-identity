@@ -677,12 +677,13 @@ p {
   width: 100%;
   max-width: none;
   padding-inline: max(20px, calc((100vw - 1160px) / 2));
+  padding-bottom: clamp(120px, 14vw, 190px);
   align-items: center;
   background:
-    radial-gradient(circle at 74% 44%, rgba(184, 155, 94, 0.26), transparent 19rem),
-    radial-gradient(circle at 84% 12%, rgba(221, 229, 234, 0.22), transparent 27rem),
+    radial-gradient(circle at 74% 38%, rgba(184, 155, 94, 0.26), transparent 19rem),
+    radial-gradient(circle at 84% 8%, rgba(221, 229, 234, 0.22), transparent 27rem),
     radial-gradient(circle at 20% 35%, rgba(47, 143, 78, 0.16), transparent 24rem),
-    linear-gradient(116deg, #031c1a 0%, var(--forest-dark) 43%, var(--forest-mid) 100%);
+    linear-gradient(180deg, var(--forest-mid) 0%, var(--forest-dark) 58%, #031c1a 100%);
 }
 
 .why-section.split {
@@ -737,12 +738,13 @@ p {
   max-width: none;
   min-height: 100vh;
   padding-inline: max(20px, calc((100vw - 1160px) / 2));
+  padding-top: clamp(120px, 14vw, 190px);
   border-top: 0;
   background:
-    radial-gradient(circle at 18% 18%, rgba(47, 143, 78, 0.18), transparent 24rem),
-    radial-gradient(circle at 76% 32%, rgba(184, 155, 94, 0.23), transparent 21rem),
+    radial-gradient(circle at 18% 12%, rgba(47, 143, 78, 0.16), transparent 24rem),
+    radial-gradient(circle at 76% 30%, rgba(184, 155, 94, 0.23), transparent 21rem),
     radial-gradient(circle at 90% 76%, rgba(221, 229, 234, 0.2), transparent 28rem),
-    linear-gradient(116deg, #031c1a 0%, var(--forest-dark) 48%, var(--forest-mid) 100%);
+    linear-gradient(180deg, #031c1a 0%, var(--forest-dark) 42%, var(--forest-mid) 100%);
 }
 
 .application-section .section-copy h2,
