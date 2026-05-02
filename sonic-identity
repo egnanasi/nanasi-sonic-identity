@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonic Identity | Nanasi Institute</title>
-    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-17" />
+    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-18" />
   </head>
   <body>
     <main>
@@ -38,9 +38,8 @@
           <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
           <div class="hero-actions">
             <a class="button primary" href="executive-application">Begin Executive Application</a>
-            <a class="button ghost" href="./#method">Explore the Method</a>
+            <a class="button ghost" href="./#voice-framework">Explore the Method</a>
           </div>
-          <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
         </div>
         <div class="sound-orbit" aria-hidden="true">
           <span></span><span></span><span></span>

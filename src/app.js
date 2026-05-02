@@ -139,6 +139,7 @@ const state = {
     deliverables: [],
   },
 };
+let navScrollHandler;
 
 const steps = [
   "Organization Profile",
@@ -469,7 +470,6 @@ function renderMarketing() {
           <a class="button primary" href="#application">Begin Executive Application</a>
           <a class="button ghost" href="#voice-framework">Explore the Method</a>
         </div>
-        <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
       </div>
       <div class="sound-orbit" aria-hidden="true">
         <span class="orbit-ring ring-one"></span>
@@ -656,16 +656,33 @@ function render() {
 
   document.querySelector("#application-form")?.addEventListener("change", collectForm);
   document.querySelector("#application-form")?.addEventListener("input", collectForm);
+  setupNavScroll();
   setupReveal();
 
-  if (window.location.hash === "#application" || window.location.hash === "#top") {
-    const target = window.location.hash === "#application" ? "#application" : "#top";
+  if (window.location.hash) {
+    const target = window.location.hash;
     [40, 180, 420].forEach((delay) => {
       setTimeout(() => {
         document.querySelector(target)?.scrollIntoView({ block: "start" });
       }, delay);
     });
   }
+}
+
+function setupNavScroll() {
+  const nav = document.querySelector(".nav");
+  if (!nav) return;
+
+  if (navScrollHandler) {
+    window.removeEventListener("scroll", navScrollHandler);
+  }
+
+  navScrollHandler = () => {
+    nav.classList.toggle("nav-scrolled", window.scrollY > 18);
+  };
+
+  navScrollHandler();
+  window.addEventListener("scroll", navScrollHandler, { passive: true });
 }
 
 function setupReveal() {
