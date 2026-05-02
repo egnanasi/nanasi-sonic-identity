@@ -423,7 +423,7 @@ function renderApplication() {
     <section class="section application-section" id="application">
       <div class="section-copy">
         <p class="eyebrow">Executive Application</p>
-        <h2>Begin With Fit, Not a Sales Call.</h2>
+        <h2>Executive Application</h2>
         <p>This application helps us determine whether your organization is a strong fit for a Sonic Identity & Alignment Experience. Based on your selections, we will prepare an initial engagement range and recommend the appropriate pathway.</p>
         <p class="note">Submission does not guarantee acceptance. Nanasi Institute reviews each inquiry carefully to determine strategic fit, scope, and readiness.</p>
       </div>
@@ -455,7 +455,7 @@ function renderMarketing() {
       <div>
         <a href="#method">Method</a>
         <a href="#phases">Engagement</a>
-        <a href="#application">Apply</a>
+        <a href="#conversation">Apply</a>
         <a href="admin.html" class="admin-link">Admin</a>
       </div>
     </nav>
@@ -466,7 +466,7 @@ function renderMarketing() {
         <h1>Help Your Organization Hear Itself Clearly.</h1>
         <p>Nanasi Institute designs sonic identity and emotional environments for organizations seeking clarity, coherence, and a deeply felt experience of their mission.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#application">Begin Executive Application</a>
+          <a class="button primary" href="#conversation">Begin Executive Application</a>
           <a class="button ghost" href="#method">Explore the Method</a>
         </div>
         <p class="hero-note">A theme song may be the beginning. Alignment is the work.</p>
@@ -560,16 +560,18 @@ function renderMarketing() {
       </div>
       <div class="phase-grid">
         ${[
-          ["01", "Discover", "Organizational Sonic & Emotional Audit", "Starting at $25K-$50K", "We begin by learning the organization beneath the brand: its history, felt values, leadership intent, relational ecosystem, and emotional environment.", ["Executive leadership interviews", "Cultural and environmental scan", "Sonic touchpoint audit", "Emotional journey mapping", "VOICE alignment diagnosis", "Sonic Alignment Diagnostic™ Report"]],
-          ["02", "Design", "Sonic Identity Architecture", "Starting at $50K-$150K", "We translate organizational identity into a distinctive sonic language: themes, motifs, instrument palettes, emotional soundscapes, and signature musical assets.", ["Sonic Identity Blueprint™", "Signature organizational theme", "Theme variations", "Jingles / motifs / digital sonic cues", "Emotional journey sound design", "Proprietary emotional care music library"]],
-          ["03", "Develop", "Deployment, Integration & Training", "Starting at $100K-$300K+", "We help the organization integrate its sonic identity across real environments, systems, gatherings, and emotional touchpoints.", ["Pilot deployment", "Staff training", "Technology integration", "Patient / employee experience implementation", "Measurement and optimization", "Ongoing advisory retainer option"]],
-        ].map(([number, title, subtitle, price, description, includes]) => `
+          ["01 — Discover", "starting at $25K+", "Listening to the organization beneath the brand", "We take time to understand your history, leadership intent, culture, and emotional landscape.", ["Leadership conversations", "Cultural and environmental observation", "Sonic touchpoint review", "Emotional journey mapping", "VOICE alignment insights"], "You receive a clear, grounded understanding of your organization’s current and potential sonic identity."],
+          ["02 — Design", "Starting at $50K+", "Translating identity into sound", "We shape a distinctive sonic language that reflects who you are and how you want to be experienced.", ["Signature theme development", "Variations and adaptive motifs", "Sonic cues for digital and physical touchpoints", "Emotional soundscapes", "Curated sound library for ongoing use"], ""],
+          ["03 — Develop", "Starting at $100k+", "Bringing the experience to life", "We support thoughtful integration across real environments and moments that matter.", ["Pilot implementation", "Staff orientation and guidance", "Integration into systems and spaces", "Experience design for patients, teams, or audiences", "Ongoing refinement and support"], ""],
+        ].map(([title, price, subtitle, description, includes, result]) => `
           <article class="phase-card">
-            <span class="phase-number">${number}</span>
-            <h3>${title}</h3>
-            <h4>${subtitle}</h4>
-            <p class="price">${price}</p>
-            <p>${description}</p>
+            <div class="phase-copy">
+              <h3>${title}</h3>
+              <p class="price">${price}</p>
+              <h4>${subtitle}</h4>
+              <p>${description}</p>
+              ${result ? `<p class="phase-result">${result}</p>` : ""}
+            </div>
             <ul>${includes.map((item) => `<li>${item}</li>`).join("")}</ul>
           </article>
         `).join("")}
@@ -578,15 +580,25 @@ function renderMarketing() {
 
     <section class="section split dark-section reveal">
       <div class="section-copy">
-        <p class="eyebrow">Premium Positioning</p>
-        <h2>This Is Not a Music Project. It Is an Alignment Engagement.</h2>
-        <p>Organizations do not invest in sonic identity because they need more music. They invest because the emotional experience of their mission matters.</p>
-        <p>Sound shapes memory, trust, atmosphere, attention, and belonging. When designed intentionally, it becomes part of the organization's operating system.</p>
+        <p class="eyebrow">Why This Matters</p>
+        <h2>Organizations invest in this work because the felt experience of their mission matters.</h2>
+        <p>Sound influences memory, trust, attention, and belonging often more quickly and longer lasting than words.</p>
+        <p>When designed with intention, it becomes part of how your organization communicates, supports, and connects.</p>
       </div>
-      <div class="outcome-stack">
-        <article><h3>For Healthcare Systems</h3><p>Reduce anxiety. Support healing. Humanize clinical environments.</p></article>
-        <article><h3>For Mission-Driven Organizations</h3><p>Clarify identity. Strengthen culture. Make values felt.</p></article>
-        <article><h3>For Executive Teams</h3><p>Align leadership voice, organizational memory, and emotional experience.</p></article>
+      <div class="impact-stack">
+        <p class="impact-heading">Where this work is especially impactful</p>
+        <article><h3>Healthcare systems</h3><p>Supporting calm, dignity, and healing environments</p></article>
+        <article><h3>Mission-driven organizations</h3><p>Helping values become tangible and felt</p></article>
+        <article><h3>Leadership teams</h3><p>Bringing alignment between vision, culture, and experience</p></article>
+      </div>
+    </section>
+
+    <section class="section conversation-section reveal" id="conversation">
+      <div class="conversation-card">
+        <p class="eyebrow">Begin the Conversation</p>
+        <h2>Start With Fit</h2>
+        <p>We begin with a brief application to understand your organization, your goals, and whether this work is the right fit for a joint partnership.</p>
+        <a class="button primary" href="#application">Begin Executive Application</a>
       </div>
     </section>
   `;
@@ -631,9 +643,6 @@ function render() {
   app.innerHTML = `
     ${renderMarketing()}
     ${renderApplication()}
-    <footer class="footer">
-      <p>Nanasi Institute helps organizations move from emotional noise to organizational voice - clarifying identity, restoring coherence, and designing environments people can feel.</p>
-    </footer>
   `;
 
   document.querySelector("#application-form")?.addEventListener("click", async (event) => {

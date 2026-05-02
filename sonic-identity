@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonic Identity | Nanasi Institute</title>
-    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-12" />
+    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-14" />
   </head>
   <body>
     <main>
@@ -46,9 +46,6 @@
           <span></span><span></span><span></span>
         </div>
       </header>
-      <footer class="footer">
-        <p>Nanasi Institute helps organizations move from emotional noise to organizational voice - clarifying identity, restoring coherence, and designing environments people can feel.</p>
-      </footer>
     </main>
   </body>
 </html>
