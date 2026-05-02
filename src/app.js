@@ -140,6 +140,10 @@ const state = {
   },
 };
 let sectionObserver;
+let sectionRailScrollHandler;
+let sectionRailResizeHandler;
+let activeSectionId = "top";
+let lastHapticAt = 0;
 
 const steps = [
   "Organization Profile",
@@ -451,10 +455,11 @@ function renderApplication() {
 
 function renderMarketing() {
   return `
-    <nav class="mobile-section-nav" aria-label="Section navigation">
+    <nav class="mobile-section-nav" aria-label="Section progress">
       ${[
         ["#top", "Hero"],
         ["#method", "Method"],
+        ["#voice-framework", "Framework"],
         ["#phases", "Engagement"],
         ["#why-this-matters", "Why It Matters"],
         ["#application", "Application"],
@@ -541,7 +546,7 @@ function renderMarketing() {
       </div>
     </section>
 
-    <section class="section voice-section reveal" id="voice-framework">
+    <section class="section voice-section framework-section reveal" id="voice-framework">
       <div class="section-copy centered">
         <p class="eyebrow">The Nanasi VOICE Framework</p>
         <h2>The Nanasi VOICE Framework™</h2>
@@ -555,7 +560,7 @@ function renderMarketing() {
           ["C", "Connection", "Relationships, trust, and belonging.", "Which relationships do you wish to foster? Where is emotional connection most needed?"],
           ["E", "Environment", "Culture, space, and atmosphere.", "What is the current emotional climate? What spaces do you provide? What should people feel when they are with you?"],
         ].map(([letter, title, lead, body]) => `
-          <article class="voice-card">
+          <article class="voice-card framework-step">
             <span>${letter}</span>
             <h3>${title}</h3>
             <p><strong>${lead}</strong></p>
@@ -695,48 +700,94 @@ function setupMobileSectionNav() {
   if (!tracker) return;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isMobileRail = () => window.matchMedia("(max-width: 700px)").matches;
   const buttons = [...tracker.querySelectorAll("button[data-section-target]")];
   const sections = buttons
     .map((button) => document.querySelector(button.dataset.sectionTarget))
     .filter(Boolean);
 
-  const setActive = (id) => {
+  const maybeHaptic = () => {
+    const now = Date.now();
+    if (prefersReducedMotion || !isMobileRail() || !("vibrate" in navigator) || now - lastHapticAt < 420) return;
+    navigator.vibrate(8);
+    lastHapticAt = now;
+  };
+
+  const setActive = (id, withHaptic = false) => {
+    if (!id || activeSectionId === id) return;
+    activeSectionId = id;
     buttons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.sectionTarget === `#${id}`);
+      const active = button.dataset.sectionTarget === `#${id}`;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-current", active ? "true" : "false");
     });
+    if (withHaptic) maybeHaptic();
+  };
+
+  const updateClosestSection = (withHaptic = true) => {
+    const viewportCenter = window.innerHeight / 2;
+    let closest = sections[0];
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const distance = rect.top <= viewportCenter && rect.bottom >= viewportCenter
+        ? 0
+        : Math.min(Math.abs(rect.top - viewportCenter), Math.abs(rect.bottom - viewportCenter));
+      if (distance < closestDistance) {
+        closest = section;
+        closestDistance = distance;
+      }
+    });
+
+    setActive(closest?.id, withHaptic);
   };
 
   tracker.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-section-target]");
     if (!button) return;
+    event.preventDefault();
     const target = document.querySelector(button.dataset.sectionTarget);
     if (!target) return;
     target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
-    if (!prefersReducedMotion && "vibrate" in navigator) {
-      navigator.vibrate(10);
-    }
+    setActive(target.id, true);
   });
 
   sectionObserver?.disconnect();
+  if (sectionRailScrollHandler) window.removeEventListener("scroll", sectionRailScrollHandler);
+  if (sectionRailResizeHandler) window.removeEventListener("resize", sectionRailResizeHandler);
+
+  let ticking = false;
+  sectionRailScrollHandler = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateClosestSection(true);
+      ticking = false;
+    });
+  };
+  sectionRailResizeHandler = () => updateClosestSection(false);
+
   sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActive(visible.target.id);
-    },
+    () => updateClosestSection(true),
     {
-      rootMargin: "-30% 0px -45% 0px",
-      threshold: [0.12, 0.28, 0.44],
+      rootMargin: "-18% 0px -18% 0px",
+      threshold: [0, 0.12, 0.28, 0.5],
     },
   );
 
   sections.forEach((section) => sectionObserver.observe(section));
+  window.addEventListener("scroll", sectionRailScrollHandler, { passive: true });
+  window.addEventListener("resize", sectionRailResizeHandler, { passive: true });
+
   if (window.location.hash) {
+    activeSectionId = "";
     setActive(window.location.hash.slice(1));
   } else {
+    activeSectionId = "";
     setActive("top");
   }
+  updateClosestSection(false);
 }
 
 function setupReveal() {

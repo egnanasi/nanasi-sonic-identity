@@ -1007,6 +1007,7 @@ textarea:focus {
 
   .mobile-section-nav button span {
     transform: none !important;
+    animation: none !important;
   }
 }
 
@@ -1049,6 +1050,25 @@ textarea:focus {
 }
 
 @media (max-width: 700px) {
+  html,
+  body,
+  main {
+    scroll-snap-type: y proximity;
+  }
+
+  .hero,
+  .section,
+  .framework-section,
+  .application-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .framework-step {
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+  }
+
   .mobile-section-nav {
     position: fixed;
     top: 50%;
@@ -1070,25 +1090,42 @@ textarea:focus {
     padding: 0;
     background: transparent;
     color: rgba(20, 42, 31, 0.56);
-    cursor: pointer;
+    cursor: default;
   }
 
   .mobile-section-nav button span {
     display: block;
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border: 1px solid currentColor;
     border-radius: 50%;
-    background: rgba(255, 250, 240, 0.76);
-    box-shadow: 0 0 16px rgba(6, 43, 38, 0.18), 0 0 0 3px rgba(255, 250, 240, 0.18);
-    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    opacity: 0.62;
+    background: rgba(255, 250, 240, 0.62);
+    box-shadow: 0 0 14px rgba(6, 43, 38, 0.16), 0 0 0 3px rgba(255, 250, 240, 0.14);
+    transition: transform 240ms ease, opacity 240ms ease, background 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
   }
 
   .mobile-section-nav button.is-active span {
-    transform: scale(1.45);
+    transform: scale(1.55);
+    opacity: 1;
     border-color: rgba(184, 155, 94, 0.94);
     background: var(--gold);
-    box-shadow: 0 0 18px rgba(184, 155, 94, 0.36);
+    box-shadow:
+      0 0 18px rgba(184, 155, 94, 0.4),
+      0 0 0 5px rgba(184, 155, 94, 0.12);
+    animation: railPulse 520ms ease;
+  }
+
+  @keyframes railPulse {
+    0% {
+      transform: scale(1);
+    }
+    48% {
+      transform: scale(1.9);
+    }
+    100% {
+      transform: scale(1.55);
+    }
   }
 
   .nav {
