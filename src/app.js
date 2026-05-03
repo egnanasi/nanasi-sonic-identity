@@ -264,7 +264,7 @@ function selectField(name, label, options) {
 
 function textareaField(name, label) {
   return `
-    <label class="field field-wide">
+    <label class="field field-wide textarea-field">
       <span>${label}</span>
       <textarea name="${name}" rows="4">${state.data[name] || ""}</textarea>
     </label>
