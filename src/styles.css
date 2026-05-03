@@ -882,12 +882,15 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  min-width: 0;
 }
 
 .check {
-  display: flex;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
   gap: 12px;
   align-items: flex-start;
+  min-width: 0;
   padding: 15px;
   border: 1px solid rgba(20, 42, 31, 0.1);
   border-radius: 14px;
@@ -896,16 +899,21 @@ textarea:focus {
 
 .check input {
   width: 16px;
+  min-width: 16px;
   min-height: 16px;
   margin-top: 4px;
   accent-color: var(--forest);
 }
 
 .check span {
+  min-width: 0;
   color: #47524b;
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.42;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .estimate-panel {
@@ -1164,12 +1172,43 @@ textarea:focus {
     font-size: clamp(2.45rem, 12vw, 3.8rem);
   }
 
+  .application-card,
+  .success-card,
+  .estimate-panel {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding: clamp(24px, 7vw, 34px);
+  }
+
+  .application-shell,
+  .form-grid,
+  .checks,
+  .submission-card,
+  .voice-grid {
+    grid-template-columns: 1fr;
+  }
+
   .form-grid,
   .checks,
   .submission-card,
   .voice-grid,
   .phase-card ul {
     grid-column: auto;
+  }
+
+  .field,
+  .check,
+  .check span,
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .check {
+    padding: 16px;
   }
 
   .sound-orbit {
