@@ -9,8 +9,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Executive Application | Nanasi Institute</title>
-    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-22" />
-    <script type="module" src="src/app.js?v=sonic-redesign-22"></script>
+    <link rel="stylesheet" href="src/styles.css?v=sonic-redesign-23" />
+    <script type="module" src="src/app.js?v=sonic-redesign-23"></script>
   </head>
   <body>
     <main id="app"></main>

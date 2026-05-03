@@ -3,6 +3,17 @@
 // Safe to delete without affecting main site
 
 const app = document.querySelector("#app");
+const ENABLE_ASSISTED_MOBILE_SCROLL = false;
+
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    window.scrollTo(0, 0);
+  }
+});
 
 const roleOptions = [
   "CEO / President",
@@ -144,6 +155,7 @@ let sectionRailScrollHandler;
 let sectionRailResizeHandler;
 let activeSectionId = "top";
 let lastHapticAt = 0;
+let initialMobileTopReset = false;
 
 const steps = [
   "Organization Profile",
@@ -676,15 +688,24 @@ function render(options = {}) {
   document.querySelector("#application-form")?.addEventListener("change", collectForm);
   document.querySelector("#application-form")?.addEventListener("input", collectForm);
   document.querySelector("#application-form")?.addEventListener("submit", (event) => event.preventDefault());
-  setupMobileSectionNav();
+  if (ENABLE_ASSISTED_MOBILE_SCROLL) {
+    setupMobileSectionNav();
+  }
   setupReveal();
 
-  if (window.location.hash && !options.skipHashScroll) {
+  if (window.location.hash && !options.skipHashScroll && !window.matchMedia("(max-width: 768px)").matches) {
     const target = window.location.hash;
     [40, 180, 420].forEach((delay) => {
       setTimeout(() => {
         document.querySelector(target)?.scrollIntoView({ block: "start" });
       }, delay);
+    });
+  }
+
+  if (!initialMobileTopReset && !options.skipHashScroll && window.matchMedia("(max-width: 768px)").matches) {
+    initialMobileTopReset = true;
+    [40, 180, 420].forEach((delay) => {
+      setTimeout(() => window.scrollTo(0, 0), delay);
     });
   }
 }
